@@ -19,7 +19,7 @@ public class GameView extends GridLayout {
     public static Boolean isOver = false;
     public static int level = 0;
 
-    //棋子矩阵
+    //matrix
     static com.example.newklotski.GamePuzzle[][] puzzleMap = new com.example.newklotski.GamePuzzle[4][5];
 
     public GameView(Context context, AttributeSet attrs, int defStyleAttr) {
