@@ -65,7 +65,6 @@ public class GameActivity extends AppCompatActivity {
 
         updateBestSteps();
 
-
     }
     private void updateBestSteps() {
         TextView best_text = findViewById(R.id.best_steps);
