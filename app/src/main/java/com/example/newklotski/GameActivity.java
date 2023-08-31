@@ -65,15 +65,7 @@ public class GameActivity extends AppCompatActivity {
 
         updateBestSteps();
 
-//        //Min Steps
-//        TextView best_text = findViewById(R.id.best_steps);
-//        Cursor cursor = sqliteDatabase.rawQuery("select min(steps) from user where game_name == 0", null);
-//        if(cursor.moveToFirst()){
-//            int minSteps = cursor.getInt(0); // 获取查询的第一个结果
-//            best_text.setText(String.valueOf(minSteps));
-//        }else{
-//            best_text.setText("No Record");
-//        }
+
     }
     private void updateBestSteps() {
         TextView best_text = findViewById(R.id.best_steps);
