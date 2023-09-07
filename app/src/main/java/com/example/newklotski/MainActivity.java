@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // Set custom fonts for various TextView elements
         TextView title_textView = findViewById(R.id.Big_title);
         TextView rule_text = findViewById(R.id.rule);
         TextView start_text = findViewById(R.id.start);
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity
         choose_text.setTypeface(tf2);
         exit_text.setTypeface(tf2);
         rank_text.setTypeface(tf2);
-
+            
+        // Set up a click listener for the "rule" button to show the game rules
         rule = findViewById(R.id.rule);
         rule.setOnClickListener(v -> showGameRule());
     }
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // Handle settings menu item click
         if (id == R.id.action_settings) {
             return true;
         }
@@ -98,21 +100,28 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        // Handle different navigation item selections
         if (id == R.id.nav_login) {
+            // Open the main activity (this activity)
             Intent intent = new Intent(MainActivity.this,MainActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_choose) {
+            // Open the ChooseGame activity
             Intent intent = new Intent(MainActivity.this,ChooseGame.class);
             startActivity(intent);
         } else if (id == R.id.nav_exit) {
+            // Exit the app
             finishAffinity();
         } else if (id == R.id.nav_communicate) {
+            // Open the ContactUsActivity
             Intent intent = new Intent(MainActivity.this,ContactUsActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_money) {
+            // Open the GiveMoneyActivity
             Intent intent = new Intent(MainActivity.this,GiveMoneyActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_server) {
+            // Open a web link to a Discord server
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://discord.gg/sGGCb7D8"));
             startActivity(intent);
         }
@@ -123,11 +132,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     static final int REQUEST_LEVEL = 1;
+
+    // Open the GameActivity when the "Play" button is clicked
     public void playGame(View view){
         Intent intent = new Intent(MainActivity.this,GameActivity.class);
         startActivity(intent);
     }
-
+                
+    // Open the RankActivity when the "Rank" button is clicked
     public void rankPage(View view){
         Intent intent = new Intent(MainActivity.this,RankActivity.class);
         startActivity(intent);
@@ -136,6 +148,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+        // Retrieve selected level from SharedPreferences and display it
         SharedPreferences sharedPreferences = getSharedPreferences("KlotskiPreferences", MODE_PRIVATE);
         int selectedLevel = sharedPreferences.getInt("selectedLevel", -1);  // set '-1' to express choosing nothing
 
@@ -145,13 +158,13 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
+    // Open the ChooseGame activity when the "Choose Game" button is clicked
     public void chooseGame(View view){
         Intent intent = new Intent(MainActivity.this,ChooseGame.class);
         startActivity(intent);
     }
 
-    //method to show game rules
+    // Show game rules in an AlertDialog when the "rule" button is clicked
     public void showGameRule(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Game Rules")
@@ -159,6 +172,8 @@ public class MainActivity extends AppCompatActivity
                 .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
                 .show();
     }
+
+    // Exit the app when the "Exit" button is clicked
     public void exitGame(View view){
         finishAffinity();
     }
