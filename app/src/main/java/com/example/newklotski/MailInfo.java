@@ -1,22 +1,27 @@
+/**
+ * This class represents a data structure to hold information related to sending emails.
+ * It includes properties such as server details, sender and receiver addresses, authentication,
+ * email subject, content, and attachments.
+ */
 package com.example.newklotski;
 
 import java.util.Properties;
 
 public class MailInfo {
 
-    private String mailServerHost;// server IP
-    private String mailServerPort;// server port
-    private String fromAddress;// sender address
-    private String toAddress;   // receiver address
-    private String userName;// username
-    private String password;// password
-    private boolean validate = true;// if need Identity authentication
-    private String subject;// subject
-    private String content;// content
-    private String[] attachFileNames;// attach
+    private String mailServerHost;  // The email server's IP address
+    private String mailServerPort;  // The email server's port
+    private String fromAddress;     // Sender's email address
+    private String toAddress;       // Receiver's email address
+    private String userName;        // User's email username
+    private String password;        // User's email password
+    private boolean validate = true; // Flag indicating if authentication is required
+    private String subject;         // Email subject
+    private String content;         // Email content
+    private String[] attachFileNames; // Array of file names for attachments
 
-    /**
-     * 获得邮件会话属性
+  /**
+     * Get the email session properties.
      */
     public Properties getProperties() {
         Properties p = new Properties();
