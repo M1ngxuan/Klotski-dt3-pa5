@@ -31,6 +31,8 @@ public class MailInfo {
         return p;
     }
 
+     // Getters and setters for various email properties
+    
     public String getMailServerHost() {
         return mailServerHost;
     }
